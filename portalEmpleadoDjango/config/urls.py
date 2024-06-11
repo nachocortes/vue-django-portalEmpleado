@@ -13,11 +13,11 @@ from . import views
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="PortalEmpleoDjango API",
+        title="PortalEmpleadoDjango API",
         default_version='v1',
-        description="PortalEmpleoDjango API description",
+        description="PortalEmpleadoDjango API description",
         terms_of_service="https://www.example.com/terms/",
-        contact=openapi.Contact(email="ilarranaga@egibide.org"),
+        contact=openapi.Contact(email="nachoclDamDjango@gmail.com"),
         license=openapi.License(name="Awesome License"),
     ),
     public=True,

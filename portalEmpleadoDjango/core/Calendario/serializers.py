@@ -37,3 +37,4 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = ['url', 'id', 'username', 'empleado']
+        ref_name = 'CalendarioUserSerializer'

@@ -24,3 +24,4 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = ['url', 'id', 'username', 'empleado', 'is_staff']
+        ref_name = 'PermisoUserSerializer'
