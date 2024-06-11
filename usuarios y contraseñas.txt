@@ -1,0 +1,3 @@
+superuseruario -> nacho -> contraseña -> 12345
+
+resto de usuarios y empleados  -> [nombre] -> contraseña -> contraseña
