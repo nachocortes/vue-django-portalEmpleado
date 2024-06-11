@@ -85,7 +85,7 @@ function startEditing(permiso) {
                     <th>Estado</th>
                     <th>Creado</th>
                     <th>Actualizado</th>
-                    <th>Acciones</th>
+                    <th v-if="auth.isAuthenticated">Opciones</th>
                 </tr>
                 </thead>
                 <tbody class="align-middle">
@@ -99,7 +99,7 @@ function startEditing(permiso) {
                     <td :title="moment(permiso.updated).format('LL, LTS')">
                         {{ moment(permiso.updated).fromNow() }}
                     </td>
-                    <td>
+                    <td v-if="auth.isAuthenticated">
                         <button class="btn btn-sm btn-warning me-1" title="Ver"
                                 @click="startEditing(permiso)">
                             <i class="bi bi-pencil-square"></i>
@@ -157,7 +157,7 @@ function startEditing(permiso) {
             </div>
             <div v-if="!isEditing">
                 <div class="col">
-                    <div class="row">
+                    <div class="row" v-if="auth.isAuthenticated">
                         <PermisoAdmin/>
                     </div>
                 </div>

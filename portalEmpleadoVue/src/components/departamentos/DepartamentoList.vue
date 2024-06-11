@@ -77,8 +77,8 @@ function startEditing(departamento) {
                     <th>Teléfono</th>
                     <th>Fecha de alta</th>
                     <th>Actualizado</th>
-                    <th>Opciones</th>
-                    <th v-if="auth.isAuthenticated"></th>
+                    <th v-if="auth.isAuthenticated">Opciones</th>
+
                 </tr>
                 </thead>
                 <tbody class="align-middle">
@@ -90,7 +90,7 @@ function startEditing(departamento) {
                     <td :title="moment(departamento.updated).format('LL, LTS')">
                         {{ moment(departamento.updated).fromNow() }}
                     </td>
-                    <td>
+                    <td v-if="auth.isAuthenticated">
                         <button class="btn btn-sm btn-warning me-1" title="Actualizar"
                                 @click="startEditing(departamento)">
                             <i class="bi bi-pencil-square"></i>
@@ -139,7 +139,7 @@ function startEditing(departamento) {
             </div>
             <div v-if="!isEditing">
                 <div class="col">
-                    <div class="row">
+                    <div class="row" v-if="auth.isAuthenticated">
                         <DepartamentoMenuAdmin/>
                     </div>
                 </div>

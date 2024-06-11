@@ -6,6 +6,7 @@ import MiBotoneraNumeroMesesVer from "@/components/calendario/calendarioComponen
 import MiDarkMode from "@/components/calendario/calendarioComponentes/CalendarioDarkMode.vue";
 import CalendarioTipoDiaSelect from "@/components/calendario/calendarioComponentes/CalendarioTipoDiaSelect.vue";
 import CalendarioSelector from "@/components/calendario/calendarioComponentes/CalendarioSelector.vue";
+import {useAuthStore} from "@/stores/auth.js";
 import {useCalendarioItemStore} from "@/stores/calendarioItems.js";
 import {
     laborables,
@@ -24,6 +25,7 @@ import {
 
 
 const calendarioItems = useCalendarioItemStore();
+const auth = useAuthStore();
 
 const {mapCurrent} = useScreens({
     xs: '0px',
@@ -242,7 +244,7 @@ function limpiar() {
                 </template>
             </VCalendar>
         </div>
-        <div class="col col-3">
+        <div class="col col-3" v-if="auth.isAuthenticated">
             <div class="col-12">
                 <nav class="d-flex flex-column flex-shrink-0 p-1 bg-body-tertiary ancho-navegacion">
                     <ul class="nav nav-pills flex-column mb-auto">

@@ -7,8 +7,6 @@ import {useAuthStore} from "@/stores/auth.js";
 import {useAusenciaStore} from "@/stores/ausencias.js";
 import AusenciaAdmin from "@/components/ausencias/AusenciaAdmin.vue";
 
-
-
 moment.locale('es');
 
 const auth = useAuthStore();
@@ -87,7 +85,8 @@ function startEditing(ausencia) {
                     <th>justificante</th>
                     <th>Creado</th>
                     <th>Actualizado</th>
-                    <th>Acciones</th>
+                    <th v-if="auth.isAuthenticated">Opciones</th>
+
                 </tr>
                 </thead>
                 <tbody class="align-middle">
@@ -101,7 +100,7 @@ function startEditing(ausencia) {
                     <td :title="moment(ausencia.updated).format('LL, LTS')">
                         {{ moment(ausencia.updated).fromNow() }}
                     </td>
-                    <td>
+                    <td v-if="auth.isAuthenticated">
                         <button class="btn btn-sm btn-warning me-1" title="Ver"
                                 @click="startEditing(ausencia)">
                             <i class="bi bi-pencil-square"></i>
@@ -159,7 +158,7 @@ function startEditing(ausencia) {
             </div>
             <div v-if="!isEditing">
                 <div class="col">
-                    <div class="row">
+                    <div class="row" v-if="auth.isAuthenticated">
                 <AusenciaAdmin/>
                     </div>
                 </div>

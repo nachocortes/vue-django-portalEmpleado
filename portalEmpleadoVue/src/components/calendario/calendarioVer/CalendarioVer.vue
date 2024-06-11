@@ -4,6 +4,7 @@ import {ref, watchEffect, onMounted, reactive} from 'vue';
 import {useScreens} from 'vue-screen-utils';
 import {useCalendarioItemStore} from "@/stores/calendarioItems.js";
 import {useCalendarioStore} from "@/stores/calendarios.js";
+import {useAuthStore} from "@/stores/auth.js";
 import MiBotoneraNumeroMesesVer from "@/components/calendario/calendarioComponentes/CalendarBotonNumMeses.vue";
 import MiDarkMode from "@/components/calendario/calendarioComponentes/CalendarioDarkMode.vue";
 import {
@@ -22,6 +23,7 @@ import {
 
 const calendarioItems = useCalendarioItemStore();
 const calendarios = useCalendarioStore();
+const auth = useAuthStore();
 
 const {mapCurrent} = useScreens({
     xs: '0px',
@@ -165,7 +167,7 @@ function limpiar() {
             </VCalendar>
         </div>
         <div class="col-3">
-            <div class="card p-3 col-12">
+            <div class="card p-3 col-12" v-if="auth.isAuthenticated">
                 <div class="mb-3 me-3">
                     <div class="row">
                         <div class="select-container">
@@ -185,7 +187,7 @@ function limpiar() {
                     </div>
                 </div>
             </div>
-            <div class="col-12">
+            <div class="col-12" v-if="auth.isAuthenticated">
                 <div class="row row-12 p-3">
                     <div class="card p-3 col-12">
                         <div class="row mb-3">

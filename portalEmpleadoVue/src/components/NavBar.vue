@@ -17,12 +17,6 @@ import Login from "@/components/Login.vue";
                 </RouterLink>
             </li>
             <li class="nav-item">
-                <RouterLink class="nav-link" to="/calendario">
-                    <i class="bi bi-building me-2"></i>
-                    <span>calendario</span>
-                </RouterLink>
-            </li>
-            <li class="nav-item">
                 <RouterLink class="nav-link" to="/departamentos">
                     <i class="bi bi-hand-thumbs-up me-2"></i>
                     <span>departamentos</span>

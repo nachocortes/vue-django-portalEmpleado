@@ -3,6 +3,7 @@ import 'v-calendar/style.css';
 import {ref, provide, watchEffect} from 'vue';
 import {useScreens} from 'vue-screen-utils';
 import {useCalendarioItemStore} from "@/stores/calendarioItems.js";
+import {useAuthStore} from "@/stores/auth.js";
 import CalendarBotonNumMeses from "@/components/calendario/calendarioComponentes/CalendarBotonNumMeses.vue";
 import MiDarkMode from "@/components/calendario/calendarioComponentes/CalendarioDarkMode.vue";
 import CalendarioTipoDiaSelect from "@/components/calendario/calendarioComponentes/CalendarioTipoDiaSelect.vue";
@@ -23,6 +24,7 @@ import {
 } from '@/utils/contadorDias.js';
 
 const calendarioItems = useCalendarioItemStore();
+const auth = useAuthStore();
 
 const {mapCurrent} = useScreens({
     xs: '0px',
@@ -30,7 +32,6 @@ const {mapCurrent} = useScreens({
     md: '768px',
     lg: '1024px',
 });
-
 
 const expanded = mapCurrent({lg: true}, true);
 const isDark = ref(true);
@@ -193,7 +194,7 @@ function limpiar() {
                 </template>
             </VCalendar>
         </div>
-        <div class="col-3">
+        <div class="col-3" v-if="auth.isAuthenticated">
             <nav class="d-flex flex-column flex-shrink-0 p-1 bg-body-tertiary ancho-navegacion">
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">

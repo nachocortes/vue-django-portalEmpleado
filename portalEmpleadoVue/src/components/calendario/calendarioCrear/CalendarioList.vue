@@ -31,7 +31,7 @@ function goToDetail(calendario) {
                     <th>Año</th>
                     <th>Fecha de alta</th>
                     <th>Actualizado</th>
-                    <th>Opciones</th>
+                    <th v-if="auth.isAuthenticated">Opciones</th>
                 </tr>
                 </thead>
                 <tbody class="align-middle">
@@ -44,7 +44,7 @@ function goToDetail(calendario) {
                     <td :title="moment(calendario.updated).format('LL, LTS')">
                         {{ moment(calendario.updated).fromNow() }}
                     </td>
-                    <td>
+                    <td v-if="auth.isAuthenticated">
                         <button class="btn btn-sm btn-success me-1" title="Ver"
                                 @click="goToDetail(calendario)">
                             <i class="bi bi-eye-fill"></i>
@@ -61,7 +61,7 @@ function goToDetail(calendario) {
         </div>
         <div class="col col-2">
             <div class="col">
-                <div class="row">
+                <div class="row" v-if="auth.isAuthenticated">
                     <CalendarioMenuAdminCrearCalendario/>
                 </div>
             </div>
